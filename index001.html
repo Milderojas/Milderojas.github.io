@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>¿Quieres ser mi novia?</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      background: url('https://gifs.org.es/gifs/gifs-de-amor.gif') no-repeat center center fixed;
+      background-size: cover;
+    }
+    .container {
+      text-align: center;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+    h1 {
+      color: #ff6f61;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    .buttons {
+      margin-top: 1.5rem;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 1.2rem;
+      margin: 10px;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    #si {
+      background-color: #4caf50;
+      color: white;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    #si:hover {
+      background-color: #45a049;
+      transform: scale(1.05);
+    }
+    #no {
+      background-color: #f44336;
+      color: white;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      position: absolute;
+    }
+    #no:hover {
+      background-color: #e53935;
+    }
+    #mensaje {
+      display: none;
+      font-size: 1.5rem;
+      color: #4caf50;
+      text-align: center;
+      margin-top: 20px;
+      animation: fadeIn 1s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    #confirmacion {
+      display: none;
+      font-size: 1.2rem;
+      color: #333;
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>¿Quieres ser mi novia?</h1>
+    <p id="confirmacion">¿Estás segura de querer elegir en este momento?</p>
+    <div class="buttons">
+      <button id="si">Sí</button>
+      <button id="no">No</button>
+    </div>
+    <p id="mensaje">¡¡Sabía que dirías que sí… o tal vez no, jsjssj! 💖 Pero en realidad, da igual cuál hubiera sido tu respuesta, porque mi corazón siempre encuentra la manera de latir más fuerte por ti. 💓 Eres esa luz que ilumina mis días, esa risa que me hace olvidar todo lo demás, y esa mirada que me hace sentir que el mundo entero se detiene solo para nosotros.💖<br>Te amo más de lo que las palabras pueden expresar, más de lo que los versos más bonitos podrían capturar. Eres mi niña hermosa, mi razón, mi complicidad, mi todo. Cada día a tu lado es un regalo que atesoro como si fuera el último, porque contigo hasta lo más simple se convierte en magia. 🌟 TE AMO JOSELYN. 💖✨
+
+</div>
+
+  <script>
+    const botonSi = document.getElementById('si');
+    const botonNo = document.getElementById('no');
+    const mensaje = document.getElementById('mensaje');
+    const confirmacion = document.getElementById('confirmacion');
+
+    // Mostrar mensaje de confirmación al intentar hacer clic en "Sí" o "No"
+    botonSi.addEventListener('click', () => {
+      if (confirm("¿Estás segura de querer elegir en este momento?")) {
+        mensaje.style.display = 'block';
+        botonSi.style.display = 'none';
+        botonNo.style.display = 'none';
+      }
+    });
+
+    botonNo.addEventListener('click', () => {
+      if (confirm("¿Estás segura de querer elegir en este momento?")) {
+        alert("¡Vamos, Josselyn, dale otra oportunidad al 'Sí'! 😊");
+      }
+    });
+
+    // Función para mover el botón "No" a una posición aleatoria
+    function moverBotonNo() {
+      const x = Math.random() * (window.innerWidth - botonNo.offsetWidth);
+      const y = Math.random() * (window.innerHeight - botonNo.offsetHeight);
+      botonNo.style.left = `${x}px`;
+      botonNo.style.top = `${y}px`;
+    }
+
+    // Evento para mover el botón "No" cuando intenten hacer clic
+    botonNo.addEventListener('mouseover', moverBotonNo);
+  </script>
+</body>
+</html>
