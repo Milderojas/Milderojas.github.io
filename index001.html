@@ -14,7 +14,7 @@
       justify-content: center;
       align-items: center;
       overflow: hidden;
-      background: url('https://gifs.org.es/gifs/gifs-de-amor.gif') no-repeat center center fixed;
+      background: url('https://i.pinimg.com/originals/15/8f/57/158f57d5a0a6d5b9f1e5f5e5e5f5e5e5.gif') no-repeat center center fixed;
       background-size: cover;
     }
     .container {
@@ -31,6 +31,7 @@
     }
     .buttons {
       margin-top: 1.5rem;
+      position: relative;
     }
     button {
       padding: 10px 20px;
@@ -81,21 +82,37 @@
 </head>
 <body>
   <div class="container">
-    <h1>¿Quieres ser mi novia?</h1>
+    <h1>Josselyn, ¿quieres ser mi novia?</h1>
     <p id="confirmacion">¿Estás segura de querer elegir en este momento?</p>
     <div class="buttons">
       <button id="si">Sí</button>
       <button id="no">No</button>
     </div>
-    <p id="mensaje">¡¡Sabía que dirías que sí… o tal vez no, jsjssj! 💖 Pero en realidad, da igual cuál hubiera sido tu respuesta, porque mi corazón siempre encuentra la manera de latir más fuerte por ti. 💓 Eres esa luz que ilumina mis días, esa risa que me hace olvidar todo lo demás, y esa mirada que me hace sentir que el mundo entero se detiene solo para nosotros.💖<br>Te amo más de lo que las palabras pueden expresar, más de lo que los versos más bonitos podrían capturar. Eres mi niña hermosa, mi razón, mi complicidad, mi todo. Cada día a tu lado es un regalo que atesoro como si fuera el último, porque contigo hasta lo más simple se convierte en magia. 🌟 TE AMO JOSELYN. 💖✨
-
-</div>
+    <p id="mensaje">¡Sabía que dirías que sí, Josselyn! 💖<br>Te amo más de lo que las palabras pueden expresar. Eres lo más importante en mi vida y quiero pasar cada momento a tu lado. 💕</p>
+  </div>
 
   <script>
     const botonSi = document.getElementById('si');
     const botonNo = document.getElementById('no');
     const mensaje = document.getElementById('mensaje');
     const confirmacion = document.getElementById('confirmacion');
+
+    // Función para mover el botón "No" a una posición aleatoria
+    function moverBotonNo() {
+      const x = Math.random() * (window.innerWidth - botonNo.offsetWidth);
+      const y = Math.random() * (window.innerHeight - botonNo.offsetHeight);
+      botonNo.style.left = `${x}px`;
+      botonNo.style.top = `${y}px`;
+    }
+
+    // Evento para mover el botón "No" en dispositivos táctiles
+    botonNo.addEventListener('touchstart', (e) => {
+      e.preventDefault(); // Evita el comportamiento por defecto del touch
+      moverBotonNo();
+    });
+
+    // Evento para mover el botón "No" en computadoras
+    botonNo.addEventListener('mouseover', moverBotonNo);
 
     // Mostrar mensaje de confirmación al intentar hacer clic en "Sí" o "No"
     botonSi.addEventListener('click', () => {
@@ -111,17 +128,6 @@
         alert("¡Vamos, Josselyn, dale otra oportunidad al 'Sí'! 😊");
       }
     });
-
-    // Función para mover el botón "No" a una posición aleatoria
-    function moverBotonNo() {
-      const x = Math.random() * (window.innerWidth - botonNo.offsetWidth);
-      const y = Math.random() * (window.innerHeight - botonNo.offsetHeight);
-      botonNo.style.left = `${x}px`;
-      botonNo.style.top = `${y}px`;
-    }
-
-    // Evento para mover el botón "No" cuando intenten hacer clic
-    botonNo.addEventListener('mouseover', moverBotonNo);
   </script>
 </body>
 </html>
