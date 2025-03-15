@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Problema de Programación</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+       background: url('https://media.tenor.com/A7d-ursSFK8AAAAM/bubu-dudu-kisses.gif');
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      overflow: hidden;
+     no-repeat center center fixed;
+      background-size: cover;
+    }
+    .container {
+      text-align: center;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      max-width: 500px;
+      width: 100%;
+    }
+    h1 {
+      color: #ff6f61;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    p {
+      font-size: 1.2rem;
+      color: #333;
+      margin-bottom: 1.5rem;
+    }
+    input {
+      padding: 10px;
+      font-size: 1rem;
+      border: 2px solid #ccc;
+      border-radius: 5px;
+      margin-bottom: 1rem;
+      width: 80%;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      background-color: #4caf50;
+      color: white;
+      transition: all 0.3s ease;
+    }
+    button:hover {
+      background-color: #45a049;
+      transform: scale(1.05);
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Pantalla del Problema -->
+    <div id="pantallaProblema">
+      <h1>¡Fecha de cumpleaños!</h1>
+      <p>
+        Escribe una función en Python que tome dos números enteros, `a` y `b`, y devuelva una cadena en el formato `dd/mm`. Los números `a` y `b` son tales que:
+        <ul>
+          <li>`a` es el resultado de la operación: `2 * 2`</li>
+          <li>`b` es el resultado de la operación: `3 * 4`</li>
+        </ul>
+        ¿Cuál es la fecha que obtienes?
+      </p>
+      <input type="text" id="respuesta" placeholder="Escribe la fecha en formato dd/mm">
+      <button onclick="verificarRespuesta()">Enviar</button>
+    </div>
+
+    <!-- Pantalla Final -->
+    <div id="pantallaFinal" class="hidden">
+      <h1>¡Correcto!</h1>
+      <p>Chevere lo de desifraste. 💕<br>I LOVE YOU.</p>
+    </div>
+  </div>
+
+  <script>
+    // Función para verificar la respuesta
+    function verificarRespuesta() {
+      const respuesta = document.getElementById('respuesta').value.trim();
+      if (respuesta === "04/12") {
+        // Respuesta correcta
+        mostrarPantalla('pantallaFinal');
+      } else {
+        // Respuesta incorrecta
+        alert("¡Ups! Inténtalo de nuevo. 💖");
+      }
+    }
+
+    // Función para cambiar de pantalla
+    function mostrarPantalla(id) {
+      // Oculta todas las pantallas
+      document.querySelectorAll('.container > div').forEach((div) => {
+        div.classList.add('hidden');
+      });
+      // Muestra la pantalla seleccionada
+      document.getElementById(id).classList.remove('hidden');
+    }
+  </script>
+</body>
+</html>
