@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Encuentra el Corazón</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f7f7f7;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      color: #333;
+    }
+    .container {
+      text-align: center;
+      background-color: #fff;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      max-width: 600px;
+      width: 100%;
+    }
+    h1 {
+      color: #ff6347;
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+    .game-board {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-top: 30px;
+    }
+    .card {
+      width: 100px;
+      height: 100px;
+      background-color: #e0f7fa;
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 24px;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      background-size: cover;
+      transition: transform 0.3s ease-in-out;
+    }
+    .card:hover {
+      transform: scale(1.1);
+    }
+    .heart {
+      font-size: 10px; /* Corazón muy pequeño */
+      color: #ff6347;
+    }
+    #message {
+      display: none;
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #ffe0e0;
+      border-radius: 10px;
+      font-size: 18px;
+      color: #d32f2f;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>¡Encuentra el Corazón! ❤️</h1>
+    <div class="game-board">
+      <div class="card" onclick="flipCard(0)" style="background-image: url('https://i.pinimg.com/originals/f4/86/6b/f4866ba07f82c3200746b9cd295887a9.gif');"></div>
+      <div class="card" onclick="flipCard(1)" style="background-image: url('https://usagif.com/wp-content/uploads/anime-love-37.gif');"></div>
+      <div class="card" onclick="flipCard(2)" style="background-image: url('https://pa1.aminoapps.com/6215/e23c32a8a5be87c338a2cc704bfed0b188d79c50_hq.gif');"></div>
+      <div class="card" onclick="flipCard(3)" style="background-image: url('https://www.canalgif.net/Gifs-animados/Amor/Te-amo/Gif-animado-Te-amo-04.gif');"></div>
+      <div class="card" onclick="flipCard(4)" style="background-image: url('https://cdn.pixabay.com/animation/2022/08/24/06/33/06-33-31-962_512.gif');"></div>
+      <div class="card" onclick="flipCard(5)" style="background-image: url('https://i.gifer.com/BSVf.gif');"></div>
+      <div class="card" onclick="flipCard(6)" style="background-image: url('https://25.media.tumblr.com/d66ddd40d62935e6710580338a534dbc/tumblr_mlbcf5zL7x1so87e4o1_500.gif');"></div>
+      <div class="card" onclick="flipCard(7)" style="background-image: url('https://cdn.pixabay.com/animation/2023/05/27/04/24/04-24-29-801_512.gif');"></div>
+    </div>
+    <div id="message">
+      <p>¡Encontraste el Corazón! ❤️💌</p>
+      <p>*¡Feliz primer mes, mi amor.!* ❤️‍🔥
+
+Parece mentira que ya haya pasado un mes desde que empezó todo esto contigo. Desde ese primer día, mi vida no ha sido igual—y no lo digo por decir, jsjsjs y aún así, siento que estás más cerquita de lo que cualquiera podría imaginar.✅
+<p></p>
+A veces el trabajo me gana, los días se hacen eternos, y sí…🥹😿 sé que no siempre respondo al toque, o que el cansancio me tumba antes de lo esperado. Pero tú siempre estás ahí, en mis pensamientos, en mi calma, en ese mensaje que espero leer para sonreír un rato.
+<p></p>
+Y aunque por ahora solo nos hablemos por chat, cada mensaje tuyo me llena. Tus palabras tienen ese algo que me abraza desde lejos. Ese “¿ya comiste?” que parece simple… pero me hace sentir cuidado, querido, amado. 💬❤️
+<p></p>
+Gracias por tu paciencia, por aguantar mis silencios, mis tiempos raros, por no soltarme cuando podría ser fácil hacerlo. Gracias por apostar por esto, por nosotros. Prometo seguir poniéndole el corazón, porque lo nuestro vale la pena, y tú vales todo.
+<p></p>
+Un mes. El primero de muchos.
+Y aunque haya kilómetros entre nosotros, hay algo que ni la distancia puede detener...
+
+--- TE AMO --
+--TE PIENSO--
+--- TE ELIJO ---
+1 MES y los que vendran 🔁💻💗</p>
+    </div>
+  </div>
+
+  <script>
+    const cards = document.querySelectorAll('.card');
+    let heartPosition = Math.floor(Math.random() * cards.length); // Random heart position
+    let flippedCards = 0;
+    let gameOver = false;
+
+    // Move the heart every 2 seconds
+    setInterval(() => {
+      if (gameOver) return;
+      heartPosition = Math.floor(Math.random() * cards.length);
+      resetCards();
+      cards[heartPosition].innerHTML = '<span class="heart">❤️</span>';
+    }, 2000);
+
+    // Function to flip cards and check for the heart
+    function flipCard(index) {
+      if (gameOver) return;
+      const card = cards[index];
+      card.style.backgroundColor = '#f0f0f0';
+      card.style.pointerEvents = 'none';
+
+      if (card.innerHTML === '<span class="heart">❤️</span>') {
+        document.getElementById('message').style.display = 'block';
+        gameOver = true;
+        setTimeout(() => {
+          alert("¡Juego terminado! ¡Lo lograste!");
+        }, 500);
+      }
+    }
+
+    // Reset all cards (clear hearts)
+    function resetCards() {
+      cards.forEach(card => card.innerHTML = '');
+    }
+  </script>
+
+</body>
+</html>
