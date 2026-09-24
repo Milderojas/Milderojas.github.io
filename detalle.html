@@ -1,0 +1,742 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Para mi amor ❤️</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(180deg, #ffd6e7, #fff0f6, #ffe1ec);
+            color: #6b2145;
+        }
+
+        .app {
+            width: 100%;
+            max-width: 500px;
+            height: 100vh;
+            margin: auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* =========================
+           CORAZONES DEL FONDO
+        ========================= */
+
+        .heart {
+            position: absolute;
+            bottom: -50px;
+            font-size: 25px;
+            opacity: 0;
+            animation: floatHeart 7s linear infinite;
+        }
+
+        .h1 { left: 10%; animation-delay: 1s; }
+        .h2 { left: 30%; animation-delay: 3s; }
+        .h3 { left: 55%; animation-delay: 0s; }
+        .h4 { left: 80%; animation-delay: 2s; }
+
+        @keyframes floatHeart {
+            0% {
+                transform: translateY(0) scale(.8);
+                opacity: 0;
+            }
+
+            20% {
+                opacity: .8;
+            }
+
+            80% {
+                opacity: .8;
+            }
+
+            100% {
+                transform: translateY(-110vh) scale(1.4);
+                opacity: 0;
+            }
+        }
+
+        /* =========================
+           PORTADA
+        ========================= */
+
+        .inicio {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 25px;
+            transition: .8s ease;
+            z-index: 20;
+        }
+
+        .inicio.ocultar {
+            transform: translateY(-100%);
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .corazon-grande {
+            font-size: 85px;
+            animation: heartbeat 1.2s infinite;
+            margin-bottom: 20px;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.15);
+            }
+        }
+
+        h1 {
+            font-size: 34px;
+            margin-bottom: 12px;
+        }
+
+        .subtitulo {
+            font-size: 17px;
+            line-height: 1.5;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            border: none;
+            background: #e84372;
+            color: white;
+            padding: 16px 30px;
+            border-radius: 50px;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(232, 67, 114, .3);
+            transition: .2s;
+        }
+
+        .btn:active {
+            transform: scale(.94);
+        }
+
+        /* =========================
+           ESCENA
+        ========================= */
+
+        .escena {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity .7s;
+        }
+
+        .escena.activa {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .titulo-escena {
+            position: absolute;
+            top: 8%;
+            width: 100%;
+            text-align: center;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .suelo {
+            position: absolute;
+            bottom: 18%;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: rgba(107, 33, 69, .2);
+            border-radius: 10px;
+        }
+
+        /* =========================
+           PERSONAJES
+        ========================= */
+
+        .persona {
+            position: absolute;
+            bottom: 18%;
+            font-size: 70px;
+            line-height: 1;
+            z-index: 5;
+        }
+
+        .chico {
+            left: -100px;
+        }
+
+        .chica {
+            right: -100px;
+        }
+
+        /* Caminar hacia el centro */
+
+        .caminar-chico {
+            animation: chicoLlega 3s forwards ease-in-out;
+        }
+
+        .caminar-chica {
+            animation: chicaLlega 3s forwards ease-in-out;
+        }
+
+        @keyframes chicoLlega {
+            0% {
+                left: -100px;
+            }
+
+            100% {
+                left: calc(50% - 80px);
+            }
+        }
+
+        @keyframes chicaLlega {
+            0% {
+                right: -100px;
+            }
+
+            100% {
+                right: calc(50% - 80px);
+            }
+        }
+
+        /* =========================
+           MIRADA
+        ========================= */
+
+        .mirando {
+            animation:
+                mirarChico .8s forwards,
+                respirar 1.2s 3;
+        }
+
+        @keyframes mirarChico {
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(5px);
+            }
+        }
+
+        @keyframes respirar {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-5px);
+            }
+        }
+
+        /* =========================
+           ACERCAMIENTO
+        ========================= */
+
+        .acercarse-chico {
+            animation: acercarChico 1.3s forwards ease-in-out;
+        }
+
+        .acercarse-chica {
+            animation: acercarChica 1.3s forwards ease-in-out;
+        }
+
+        @keyframes acercarChico {
+            from {
+                left: calc(50% - 80px);
+            }
+
+            to {
+                left: calc(50% - 55px);
+            }
+        }
+
+        @keyframes acercarChica {
+            from {
+                right: calc(50% - 80px);
+            }
+
+            to {
+                right: calc(50% - 55px);
+            }
+        }
+
+        /* =========================
+           BESO
+        ========================= */
+
+        .beso {
+            animation: beso 1.2s forwards;
+        }
+
+        @keyframes beso {
+            0% {
+                transform: scale(1);
+            }
+
+            40% {
+                transform: scale(1.12);
+            }
+
+            70% {
+                transform: scale(1.08);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .besito {
+            position: absolute;
+            left: 50%;
+            top: 42%;
+            transform: translate(-50%, -50%);
+            font-size: 45px;
+            opacity: 0;
+            z-index: 10;
+        }
+
+        .mostrar-beso {
+            animation: aparecerBeso 1.5s forwards;
+        }
+
+        @keyframes aparecerBeso {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(.2);
+            }
+
+            40% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.3);
+            }
+
+            100% {
+                opacity: 0;
+                transform: translate(-50%, -80%) scale(1);
+            }
+        }
+
+        /* =========================
+           CAMINAR JUNTOS
+        ========================= */
+
+        .juntos-chico {
+            animation: caminarJuntosChico 4s forwards linear;
+        }
+
+        .juntos-chica {
+            animation: caminarJuntosChica 4s forwards linear;
+        }
+
+        @keyframes caminarJuntosChico {
+            from {
+                left: calc(50% - 55px);
+            }
+
+            to {
+                left: 110%;
+            }
+        }
+
+        @keyframes caminarJuntosChica {
+            from {
+                right: calc(50% - 55px);
+            }
+
+            to {
+                right: -150px;
+            }
+        }
+
+        /* =========================
+           MANOS
+        ========================= */
+
+        .manos {
+            position: absolute;
+            left: 50%;
+            bottom: 30%;
+            transform: translateX(-50%);
+            font-size: 38px;
+            opacity: 0;
+            z-index: 8;
+        }
+
+        .mostrar-manos {
+            animation: manos 4s forwards;
+        }
+
+        @keyframes manos {
+            0% {
+                opacity: 0;
+                transform: translateX(-50%) scale(.5);
+            }
+
+            20% {
+                opacity: 1;
+                transform: translateX(-50%) scale(1);
+            }
+
+            80% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+                transform: translateX(250px);
+            }
+        }
+
+        /* =========================
+           MENSAJE FINAL
+        ========================= */
+
+        .final {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 25px;
+            opacity: 0;
+            transform: scale(.8);
+            pointer-events: none;
+            transition: 1s;
+            z-index: 30;
+        }
+
+        .final.mostrar {
+            opacity: 1;
+            transform: scale(1);
+            pointer-events: auto;
+        }
+
+        .carta {
+            width: 100%;
+            background: rgba(255,255,255,.9);
+            padding: 35px 25px;
+            border-radius: 25px;
+            text-align: center;
+            box-shadow: 0 15px 40px rgba(107,33,69,.18);
+        }
+
+        .carta .emoji {
+            font-size: 60px;
+            margin-bottom: 15px;
+        }
+
+        .carta h2 {
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .carta p {
+            font-size: 17px;
+            line-height: 1.7;
+            margin-bottom: 25px;
+        }
+
+        .firma {
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        /* =========================
+           ESTRELLAS
+        ========================= */
+
+        .estrella {
+            position: absolute;
+            font-size: 25px;
+            animation: aparecerEstrella 1s forwards;
+            opacity: 0;
+        }
+
+        @keyframes aparecerEstrella {
+            from {
+                opacity: 0;
+                transform: scale(0);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (min-width: 600px) {
+            .app {
+                box-shadow: 0 0 50px rgba(0,0,0,.08);
+            }
+        }
+
+        @media (max-height: 650px) {
+            .corazon-grande {
+                font-size: 65px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            .persona {
+                font-size: 58px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- CORAZONES -->
+    <div class="heart h1">❤️</div>
+    <div class="heart h2">💕</div>
+    <div class="heart h3">💗</div>
+    <div class="heart h4">💖</div>
+
+    <!-- =========================
+         INICIO
+    ========================== -->
+
+    <section class="inicio" id="inicio">
+
+        <div class="corazon-grande">❤️</div>
+
+        <h1>Para MI AMOR</h1>
+
+        <p class="subtitulo">
+            Tengo un pequeño detalle para ti... 🥰
+            <br>
+            Toca el botón y mira nuestra pequeña historia.
+        </p>
+
+        <button class="btn" onclick="comenzar()">
+            Abrir sorpresa 💕
+        </button>
+
+    </section>
+
+
+    <!-- =========================
+         ESCENA
+    ========================== -->
+
+    <section class="escena" id="escena">
+
+        <div class="titulo-escena" id="titulo">
+            A veces las mejores historias...
+        </div>
+
+        <div class="suelo"></div>
+
+        <div class="persona chico" id="chico">
+            👦🏻
+        </div>
+
+        <div class="persona chica" id="chica">
+            👧🏻
+        </div>
+
+        <div class="besito" id="besito">
+            💋
+        </div>
+
+        <div class="manos" id="manos">
+            🫶🏻
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         FINAL
+    ========================== -->
+
+    <section class="final" id="final">
+
+        <div class="carta">
+
+            <div class="emoji">
+                🥰❤️
+            </div>
+
+            <h2>Y entonces...</h2>
+
+            <p>
+                Entre tantas personas en este mundo,
+                qué bonito fue coincidir contigo.
+                ❤️
+                <br><br>
+                No sé qué nos depare el futuro,
+                pero quiero seguir caminando
+                de tu mano. 🫶🏻
+            </p>
+
+            <div class="firma">
+                Con mucho amor ❤️
+                <br>
+                MILDER
+            </div>
+
+            <br>
+
+            <button class="btn" onclick="location.reload()">
+                Ver otra vez 🔄
+            </button>
+
+        </div>
+
+    </section>
+
+</div>
+
+
+<script>
+
+    const inicio = document.getElementById("inicio");
+    const escena = document.getElementById("escena");
+
+    const chico = document.getElementById("chico");
+    const chica = document.getElementById("chica");
+
+    const besito = document.getElementById("besito");
+    const manos = document.getElementById("manos");
+
+    const final = document.getElementById("final");
+    const titulo = document.getElementById("titulo");
+
+
+    function esperar(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+
+    async function comenzar() {
+
+        /* Ocultar portada */
+        inicio.classList.add("ocultar");
+
+        await esperar(700);
+
+        /* Activar escena */
+        escena.classList.add("activa");
+
+        await esperar(500);
+
+        /* Cambiar texto */
+        titulo.innerHTML = "Y un día... se encontraron. 👀";
+
+        /* Los dos caminan */
+        chico.classList.add("caminar-chico");
+        chica.classList.add("caminar-chica");
+
+        await esperar(3300);
+
+        /* Se miran */
+        titulo.innerHTML = "Se miraron... ❤️";
+
+        chico.classList.add("mirando");
+
+        await esperar(1200);
+
+        /* Se acercan */
+        titulo.innerHTML = "Y poco a poco... 💕";
+
+        chico.classList.add("acercarse-chico");
+        chica.classList.add("acercarse-chica");
+
+        await esperar(1400);
+
+        /* Beso */
+        titulo.innerHTML = "Y pasó... 💋";
+
+        chico.classList.add("beso");
+        chica.classList.add("beso");
+
+        besito.classList.add("mostrar-beso");
+
+        await esperar(1500);
+
+        /* Se toman de la mano */
+        titulo.innerHTML = "Y decidieron caminar juntos. 🫶🏻";
+
+        manos.classList.add("mostrar-manos");
+
+        chico.classList.add("juntos-chico");
+        chica.classList.add("juntos-chica");
+
+        await esperar(4200);
+
+        /* Final */
+        escena.classList.remove("activa");
+
+        await esperar(500);
+
+        final.classList.add("mostrar");
+
+        crearCorazones();
+
+    }
+
+
+    function crearCorazones() {
+
+        const emojis = ["❤️", "💕", "💗", "💖", "🥰", "✨"];
+
+        for (let i = 0; i < 18; i++) {
+
+            const elemento = document.createElement("div");
+
+            elemento.className = "estrella";
+
+            elemento.innerHTML =
+                emojis[Math.floor(Math.random() * emojis.length)];
+
+            elemento.style.left =
+                Math.random() * 95 + "%";
+
+            elemento.style.top =
+                Math.random() * 95 + "%";
+
+            elemento.style.animationDelay =
+                Math.random() * 1.5 + "s";
+
+            final.appendChild(elemento);
+        }
+    }
+
+</script>
+
+</body>
+</html>
+```
